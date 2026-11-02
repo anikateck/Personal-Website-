@@ -99,32 +99,15 @@
 <h2>My Community Service Network</h2>
 
 <p>
-    This interactive visualization shows some of the
-    community service experiences I have participated in
-    and the organizations connected to them. Click on a
-    service activity to learn more about it.
+    This interactive visualization shows some of
+    my volunteering experiences. Click a circle
+    to learn more about each activity.
 </p>
 
 <div id="network-chart"></div>
 
-<div class="flip-card" id="service-card">
-    <div class="flip-card-inner" id="flip-inner">
-        <div class="flip-card-front">
-            <h3>Click a circle</h3>
-            <p>
-                Select a service activity in the network
-                above to see more information.
-            </p>
-        </div>
-        <div class="flip-card-back" id="card-back">
-            <h3 id="card-title">Service Activity</h3>
-            <p id="card-text">
-                Details will appear here when you click a node.
-            </p>
-        </div>
-    </div>
-</div>
-
+<h2>Community Service Memories</h2>
+    
 <div class="photo-gallery">
     
 <img src="service.jpg"
@@ -196,60 +179,93 @@
 </ul>
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
-    
+
 <script>
-    // My volunteering experiences
+    // My community service experiences
     const activities = [
         {
             name: "Project 351",
-            details: "A Massachusetts nonprofit that brings young leaders together through community service."
+            label: ["Project 351"],
+            description: [
+                "Project 351 is a Massachusetts",
+                "nonprofit focused on youth",
+                "leadership and service. I have",
+                "continued volunteering as an",
+                "alum, supporting service",
+                "projects across Massachusetts."
+            ],
+            x: 450, y: 110
         },
         {
             name: "Alternative Spring Break",
-            details: "Participated through Northeastern University, volunteering with the Greater Boston Food Bank."
+            label: ["Alternative", "Spring Break"],
+            description: [
+                "Through Northeastern University,",
+                "I participated in Alternative",
+                "Spring Break and volunteered",
+                "with the Greater Boston Food",
+                "Bank to support efforts",
+                "addressing food insecurity."
+            ],
+            x: 695, y: 230
         },
         {
             name: "9/11 Tribute Service",
-            details: "Participated in a tribute service in partnership with the Massachusetts Military Heroes Fund."
+            label: ["9/11 Tribute", "Service"],
+            description: [
+                "I participated in the 9/11",
+                "Tribute Service in partnership",
+                "with the Massachusetts Military",
+                "Heroes Fund. The event honored",
+                "those who lost their lives and",
+                "brought volunteers together."
+            ],
+            x: 600, y: 520
         },
         {
             name: "Food Drives",
-            details: "Helped organize and participate in food drives to support local communities."
+            label: ["Food Drives"],
+            description: [
+                "I have participated in food",
+                "drives to help collect donations",
+                "for people experiencing food",
+                "insecurity. These projects",
+                "have shown me how communities",
+                "can make a difference together."
+            ],
+            x: 300, y: 520
         },
         {
             name: "WBZ Toy Service Day",
-            details: "Participated in a holiday service event supporting families and children."
+            label: ["WBZ Toy", "Service Day"],
+            description: [
+                "I have participated in WBZ's",
+                "annual service activities",
+                "helping support children and",
+                "families during the holidays.",
+                "I enjoy working with other",
+                "volunteers for a shared goal."
+            ],
+            x: 205, y: 230
         }
     ];
 
-    // Create the D3 network
-    const width = 700;
-    const height = 420;
+    // Create the D3 visualization
+    const width = 900;
+    const height = 630;
+    const center = { x: 450, y: 315 };
 
     const svg = d3.select("#network-chart")
         .append("svg")
         .attr("viewBox", `0 0 ${width} ${height}`)
-        .attr("role", "img")
-        .attr("aria-label", "Interactive network of my community service activities");
-
-    const center = { x: 350, y: 205 };
-
-    // Arrange activities around the center
-    const nodes = activities.map((activity, i) => {
-        const angle = (2 * Math.PI * i / activities.length)
-            - Math.PI / 2;
-
-        return {
-            ...activity,
-            x: center.x + 235 * Math.cos(angle),
-            y: center.y + 150 * Math.sin(angle)
-        };
-    });
+        .style("width", "100%")
+        .style("height", "auto");
 
     // Draw connecting lines
-    svg.selectAll("line")
-        .data(nodes)
+    svg.selectAll(".network-line")
+        .data(activities)
         .join("line")
+        .attr("class", "network-line")
         .attr("x1", center.x)
         .attr("y1", center.y)
         .attr("x2", d => d.x)
@@ -257,100 +273,176 @@
         .attr("stroke", "#AAB8C5")
         .attr("stroke-width", 2);
 
-    // Draw center circle
+    // Draw the center of the network
     svg.append("circle")
         .attr("cx", center.x)
         .attr("cy", center.y)
-        .attr("r", 56)
+        .attr("r", 65)
         .attr("fill", "#243B53");
 
     svg.append("text")
         .attr("x", center.x)
-        .attr("y", center.y - 6)
+        .attr("y", center.y - 8)
         .attr("text-anchor", "middle")
         .attr("fill", "white")
-        .attr("font-size", 17)
+        .attr("font-size", 19)
         .text("My Service");
 
     svg.append("text")
         .attr("x", center.x)
-        .attr("y", center.y + 15)
+        .attr("y", center.y + 16)
         .attr("text-anchor", "middle")
         .attr("fill", "white")
-        .attr("font-size", 17)
+        .attr("font-size", 19)
         .text("Journey");
 
-    // Draw clickable activity circles
-    const groups = svg.selectAll(".activity")
-        .data(nodes)
+    // Make each service activity interactive
+    const nodes = svg.selectAll(".service-node")
+        .data(activities)
         .join("g")
-        .attr("class", "activity")
-        .attr("transform", d => `translate(${d.x},${d.y})`)
-        .style("cursor", "pointer")
+        .attr("class", "service-node")
+        .attr("transform", d =>
+            `translate(${d.x},${d.y})`
+        )
         .attr("tabindex", 0)
         .attr("role", "button")
-        .attr("aria-label", d => "Learn about " + d.name);
+        .attr("aria-label", d => d.name)
+        .style("cursor", "pointer");
 
-    groups.append("circle")
-        .attr("r", 67)
+    // Start with circular shapes
+    nodes.append("rect")
+        .attr("class", "node-shape")
+        .attr("x", -68)
+        .attr("y", -68)
+        .attr("width", 136)
+        .attr("height", 136)
+        .attr("rx", 68)
         .attr("fill", "#DCE5EB")
         .attr("stroke", "#526D82")
         .attr("stroke-width", 2);
 
-    // Split long names into two lines
-    const labels = {
-        "Project 351": ["Project 351"],
-        "Alternative Spring Break": ["Alternative", "Spring Break"],
-        "9/11 Tribute Service": ["9/11 Tribute", "Service"],
-        "Food Drives": ["Food Drives"],
-        "WBZ Toy Service Day": ["WBZ Toy", "Service Day"]
-    };
+    // Add labels
+    nodes.append("text")
+        .attr("class", "node-label")
+        .attr("text-anchor", "middle")
+        .attr("fill", "#243B53")
+        .attr("font-size", 15)
+        .attr("font-weight", "bold")
+        .style("pointer-events", "none");
 
-    groups.each(function(d) {
-        const text = d3.select(this)
-            .append("text")
-            .attr("text-anchor", "middle")
-            .attr("fill", "#243B53")
-            .attr("font-size", 12)
-            .attr("font-weight", "bold")
-            .style("pointer-events", "none");
+    // Function to display text on a node
+    function drawText(node, lines, isOpen) {
+        const text = node.select(".node-label");
 
-        const lines = labels[d.name];
+        text.selectAll("tspan").remove();
+
+        text.attr("font-size", isOpen ? 13 : 15)
+            .attr("font-weight", isOpen ? "normal" : "bold")
+            .attr("fill", isOpen ? "white" : "#243B53");
+
+        const lineHeight = isOpen ? 19 : 19;
+        const startY = -((lines.length - 1) * lineHeight) / 2;
 
         lines.forEach((line, i) => {
             text.append("tspan")
                 .attr("x", 0)
-                .attr("dy", i === 0 ? (lines.length === 1 ? 4 : -4) : 17)
+                .attr("y", startY + i * lineHeight)
                 .text(line);
         });
-    });
-
-    // Flip the information card when a circle is clicked
-    function showActivity(event, d) {
-        const card = document.getElementById("flip-inner");
-
-        // Reset card so each selection triggers a flip
-        card.classList.remove("flipped");
-
-        document.getElementById("card-title").textContent = d.name;
-        document.getElementById("card-text").textContent = d.details;
-
-        // Restart the flip animation
-        void card.offsetWidth;
-        card.classList.add("flipped");
     }
 
-    groups.on("click", showActivity);
+    nodes.each(function(d) {
+        drawText(d3.select(this), d.label, false);
+    });
 
-    // Allow keyboard selection too
-    groups.on("keydown", function(event, d) {
+    // Flip the actual node when clicked
+    let selectedNode = null;
+    let animating = false;
+
+    function flipNode(node, d, open, finished) {
+        node.transition()
+            .duration(250)
+            .attr("transform",
+                `translate(${d.x},${d.y}) scale(0.01,1)`
+            )
+            .on("end", function() {
+                const shape = node.select(".node-shape");
+
+                if (open) {
+                    shape.attr("x", -115)
+                        .attr("y", -92)
+                        .attr("width", 230)
+                        .attr("height", 184)
+                        .attr("rx", 18)
+                        .attr("fill", "#526D82");
+
+                    drawText(node, d.description, true);
+                } else {
+                    shape.attr("x", -68)
+                        .attr("y", -68)
+                        .attr("width", 136)
+                        .attr("height", 136)
+                        .attr("rx", 68)
+                        .attr("fill", "#DCE5EB");
+
+                    drawText(node, d.label, false);
+                }
+
+                node.transition()
+                    .duration(250)
+                    .attr("transform",
+                        `translate(${d.x},${d.y}) scale(1,1)`
+                    )
+                    .on("end", function() {
+                        if (finished) finished();
+                    });
+            });
+    }
+
+    function handleClick(event, d) {
+        if (animating) return;
+
+        animating = true;
+        const clicked = d3.select(this);
+
+        if (selectedNode === this) {
+            flipNode(clicked, d, false, () => {
+                selectedNode = null;
+                animating = false;
+            });
+        } else {
+            const previous = selectedNode;
+
+            function openNewNode() {
+                clicked.raise();
+
+                flipNode(clicked, d, true, () => {
+                    selectedNode = clicked.node();
+                    animating = false;
+                });
+            }
+
+            if (previous) {
+                const oldNode = d3.select(previous);
+                const oldData = oldNode.datum();
+
+                flipNode(oldNode, oldData, false, openNewNode);
+            } else {
+                openNewNode();
+            }
+        }
+    }
+
+    nodes.on("click", handleClick);
+
+    // Support keyboard interactions
+    nodes.on("keydown", function(event, d) {
         if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
-            showActivity(event, d);
+            handleClick.call(this, event, d);
         }
     });
 </script>
 
-    
 </body>
 </html>
