@@ -1,0 +1,70 @@
+
+/* General website styling */
+body {
+    background-color: #F8F6F2;
+    color: #333333;
+    font-family: Arial, sans-serif;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* Main heading */
+h1 {
+    color: #243B53;
+    font-family: Georgia, serif;
+    font-size: 36px;
+    text-align: center;
+}
+
+/* Section headings */
+h2 {
+    color: #526D82;
+    font-family: Georgia, serif;
+    margin-top: 30px;
+}
+
+/* Paragraph styling */
+p {
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+/* Navigation menu */
+nav {
+    background-color: #243B53;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: bold;
+}
+
+/* Navigation hover effect */
+nav a:hover {
+    color: #D9B99B;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+/* Contact links */
+a {
+    color: #526D82;
+}
+
+/* List styling */
+li {
+    margin-bottom: 10px;
+}
