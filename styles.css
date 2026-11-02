@@ -69,25 +69,29 @@ li {
     margin-bottom: 10px;
 }
 
+
 /* Community service photo gallery */
 .photo-gallery {
-    display: block;
-    column-count: 2;
-    column-gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 20px;
 }
 
-/* Gallery photos */
+/* Make all photos equal size */
 .photo-gallery img {
     display: block;
     width: 100%;
-    height: auto;
-    margin: 0 0 15px 0;
-    break-inside: avoid;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+    margin: 0;
+    border-radius: 12px;
 }
 
 /* Mobile screens */
 @media (max-width: 600px) {
     .photo-gallery {
-        column-count: 1;
+        grid-template-columns: 1fr;
     }
 }
