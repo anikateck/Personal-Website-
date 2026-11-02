@@ -96,6 +96,17 @@
         <li>Giving back to others</li>
     </ul>
 
+<h2>Community Service Activities</h2>
+
+<p>
+    This chart shows examples of the different
+    types of community service I've participated in.
+    The values are illustrative, not actual
+    volunteer hours.
+</p>
+
+<div id="volunteer-chart"></div>
+
 <div class="photo-gallery">
     
 <img src="service.jpg"
@@ -165,6 +176,66 @@
         </a>
     </li>
 </ul>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<script>
+    // Types of community service I have participated in
+    const data = [
+        { activity: "Project 351", count: 5 },
+        { activity: "9/11 Service", count: 3 },
+        { activity: "Food Drives", count: 4 },
+        { activity: "Alternative Break", count: 2 },
+        { activity: "Toy Drives", count: 3 }
+    ];
+
+    // Set up the chart dimensions
+    const width = 700;
+    const height = 350;
+    const margin = { top: 20, right: 20, bottom: 90, left: 50 };
+
+    // Create the chart
+    const svg = d3.select("#volunteer-chart")
+        .append("svg")
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .style("max-width", "100%")
+        .style("height", "auto");
+
+    // Set up the horizontal axis
+    const x = d3.scaleBand()
+        .domain(data.map(d => d.activity))
+        .range([margin.left, width - margin.right])
+        .padding(0.2);
+
+    // Set up the vertical axis
+    const y = d3.scaleLinear()
+        .domain([0, d3.max(data, d => d.count)])
+        .nice()
+        .range([height - margin.bottom, margin.top]);
+
+    // Draw the bars
+    svg.selectAll("rect")
+        .data(data)
+        .join("rect")
+        .attr("x", d => x(d.activity))
+        .attr("y", d => y(d.count))
+        .attr("width", x.bandwidth())
+        .attr("height", d => y(0) - y(d.count))
+        .attr("fill", "#526D82");
+
+    // Add the horizontal axis
+    svg.append("g")
+        .attr("transform", `translate(0,${height - margin.bottom})`)
+        .call(d3.axisBottom(x))
+        .selectAll("text")
+        .attr("transform", "rotate(-30)")
+        .style("text-anchor", "end");
+
+    // Add the vertical axis
+    svg.append("g")
+        .attr("transform", `translate(${margin.left},0)`)
+        .call(d3.axisLeft(y).ticks(5).tickFormat(d3.format("d")));
+</script>
 
 </body>
 </html>
