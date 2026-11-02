@@ -197,5 +197,160 @@
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
     
+<script>
+    // My volunteering experiences
+    const activities = [
+        {
+            name: "Project 351",
+            details: "A Massachusetts nonprofit that brings young leaders together through community service."
+        },
+        {
+            name: "Alternative Spring Break",
+            details: "Participated through Northeastern University, volunteering with the Greater Boston Food Bank."
+        },
+        {
+            name: "9/11 Tribute Service",
+            details: "Participated in a tribute service in partnership with the Massachusetts Military Heroes Fund."
+        },
+        {
+            name: "Food Drives",
+            details: "Helped organize and participate in food drives to support local communities."
+        },
+        {
+            name: "WBZ Toy Service Day",
+            details: "Participated in a holiday service event supporting families and children."
+        }
+    ];
+
+    // Create the D3 network
+    const width = 700;
+    const height = 420;
+
+    const svg = d3.select("#network-chart")
+        .append("svg")
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .attr("role", "img")
+        .attr("aria-label", "Interactive network of my community service activities");
+
+    const center = { x: 350, y: 205 };
+
+    // Arrange activities around the center
+    const nodes = activities.map((activity, i) => {
+        const angle = (2 * Math.PI * i / activities.length)
+            - Math.PI / 2;
+
+        return {
+            ...activity,
+            x: center.x + 235 * Math.cos(angle),
+            y: center.y + 150 * Math.sin(angle)
+        };
+    });
+
+    // Draw connecting lines
+    svg.selectAll("line")
+        .data(nodes)
+        .join("line")
+        .attr("x1", center.x)
+        .attr("y1", center.y)
+        .attr("x2", d => d.x)
+        .attr("y2", d => d.y)
+        .attr("stroke", "#AAB8C5")
+        .attr("stroke-width", 2);
+
+    // Draw center circle
+    svg.append("circle")
+        .attr("cx", center.x)
+        .attr("cy", center.y)
+        .attr("r", 56)
+        .attr("fill", "#243B53");
+
+    svg.append("text")
+        .attr("x", center.x)
+        .attr("y", center.y - 6)
+        .attr("text-anchor", "middle")
+        .attr("fill", "white")
+        .attr("font-size", 17)
+        .text("My Service");
+
+    svg.append("text")
+        .attr("x", center.x)
+        .attr("y", center.y + 15)
+        .attr("text-anchor", "middle")
+        .attr("fill", "white")
+        .attr("font-size", 17)
+        .text("Journey");
+
+    // Draw clickable activity circles
+    const groups = svg.selectAll(".activity")
+        .data(nodes)
+        .join("g")
+        .attr("class", "activity")
+        .attr("transform", d => `translate(${d.x},${d.y})`)
+        .style("cursor", "pointer")
+        .attr("tabindex", 0)
+        .attr("role", "button")
+        .attr("aria-label", d => "Learn about " + d.name);
+
+    groups.append("circle")
+        .attr("r", 67)
+        .attr("fill", "#DCE5EB")
+        .attr("stroke", "#526D82")
+        .attr("stroke-width", 2);
+
+    // Split long names into two lines
+    const labels = {
+        "Project 351": ["Project 351"],
+        "Alternative Spring Break": ["Alternative", "Spring Break"],
+        "9/11 Tribute Service": ["9/11 Tribute", "Service"],
+        "Food Drives": ["Food Drives"],
+        "WBZ Toy Service Day": ["WBZ Toy", "Service Day"]
+    };
+
+    groups.each(function(d) {
+        const text = d3.select(this)
+            .append("text")
+            .attr("text-anchor", "middle")
+            .attr("fill", "#243B53")
+            .attr("font-size", 12)
+            .attr("font-weight", "bold")
+            .style("pointer-events", "none");
+
+        const lines = labels[d.name];
+
+        lines.forEach((line, i) => {
+            text.append("tspan")
+                .attr("x", 0)
+                .attr("dy", i === 0 ? (lines.length === 1 ? 4 : -4) : 17)
+                .text(line);
+        });
+    });
+
+    // Flip the information card when a circle is clicked
+    function showActivity(event, d) {
+        const card = document.getElementById("flip-inner");
+
+        // Reset card so each selection triggers a flip
+        card.classList.remove("flipped");
+
+        document.getElementById("card-title").textContent = d.name;
+        document.getElementById("card-text").textContent = d.details;
+
+        // Restart the flip animation
+        void card.offsetWidth;
+        card.classList.add("flipped");
+    }
+
+    groups.on("click", showActivity);
+
+    // Allow keyboard selection too
+    groups.on("keydown", function(event, d) {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            showActivity(event, d);
+        }
+    });
+</script>
+
+    
 </body>
 </html>
