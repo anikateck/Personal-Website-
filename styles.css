@@ -70,15 +70,13 @@ li {
 }
 
 /* Community service photo gallery */
-
-/* Community service photo gallery */
 .photo-gallery {
-    columns: 2;
+    display: block;
+    column-count: 2;
     column-gap: 15px;
-    margin-top: 20px;
 }
 
-/* Gallery images */
+/* Gallery photos */
 .photo-gallery img {
     display: block;
     width: 100%;
@@ -87,9 +85,9 @@ li {
     break-inside: avoid;
 }
 
-/* Mobile layout */
+/* Mobile screens */
 @media (max-width: 600px) {
     .photo-gallery {
-        columns: 1;
+        column-count: 1;
     }
 }
