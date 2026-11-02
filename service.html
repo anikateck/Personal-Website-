@@ -4,151 +4,252 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Community Service Journey</title>
-    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="styles.css?v=4">
 
+    <style>
+        /* D3 network and information cards */
+        #network-chart {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 25px auto;
+        }
 
+        #network-chart svg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .network-details {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 88%;
+            max-width: 570px;
+            max-height: 85%;
+            overflow-y: auto;
+            box-sizing: border-box;
+            padding: 25px 30px;
+            background: #526D82;
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, -50%) rotateY(-90deg);
+            transition: transform 0.45s, opacity 0.45s,
+                        visibility 0.45s;
+        }
+
+        .network-details.open {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) rotateY(0deg);
+        }
+
+        .network-details h3 {
+            margin-top: 0;
+            color: white;
+            font-family: Georgia, serif;
+            font-size: 23px;
+        }
+
+        .network-details p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: white;
+        }
+
+        .back-button {
+            background: white;
+            color: #243B53;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background: #DCE5EB;
+        }
+
+        @media (max-width: 600px) {
+            .network-details {
+                width: 96%;
+                max-height: 95%;
+                padding: 12px 15px;
+            }
+
+            .network-details h3 {
+                font-size: 17px;
+            }
+
+            .network-details p {
+                font-size: 12px;
+                line-height: 1.4;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    
+
 <nav>
     <a href="index.html">Home</a>
     <a href="service.html">Community Service</a>
 </nav>
 
+<h1>My Community Service Journey</h1>
 
-    <h1>My Community Service Journey</h1>
+<h2>Project 351</h2>
 
-    <h2>Project 351</h2>
+<p>
+    Community service has been a big part of my life,
+    especially through my involvement with Project 351.
+    Project 351 is a nonprofit organization that brings
+    together young leaders from across Massachusetts
+    to participate in service and make a difference
+    in their communities. Being involved has allowed
+    me to meet people from different backgrounds and
+    develop friendships through volunteering.
+</p>
 
-    <p>
-        Community service has been a big part of
-        my life, especially through my involvement
-        with Project 351. Project 351 is a non profit organization 
-        that brings together young leaders from across
-        Massachusetts to participate in service
-        and make a difference in their communities.
-        Being involved has allowed me to meet
-        people from different backgrounds and
-        develop friendships through volunteering.
-    </p>
+<p>
+    My involvement with Project 351 has continued
+    beyond my initial year as an ambassador.
+    As an alum, I've had the opportunity to stay
+    connected with the organization and participate
+    in different service events. I've learned a lot
+    about leadership, teamwork, and the importance
+    of helping others through these experiences.
+</p>
 
-    <p>
-        My involvement with Project 351 has
-        continued beyond my initial year as an
-        ambassador. As an alum, I've had the
-        opportunity to stay connected with the
-        organization and participate in different
-        service events. I've learned a lot about
-        leadership, teamwork, and the importance
-        of helping others through these experiences.
-    </p>
+<h2>My Volunteering Experiences</h2>
 
-    <h2>My Volunteering Experiences</h2>
+<p>
+    Over the years, I've participated in many community
+    service initiatives, including Alternative Spring
+    Break, the 9/11 Tribute Service to honor the lives
+    lost on September 11, WBZ Annual Toy Service Day,
+    food drives, and other projects through Project 351.
+    Each experience has given me the opportunity to
+    support different communities, meet new people,
+    and take on leadership roles. Volunteering continues
+    to be a meaningful part of my life, and I enjoy
+    finding new ways to give back and stay involved.
+</p>
 
-    <p>
-         Over the years, I've participated in many
-        community service initiatives, including
-        Alternative Spring Break, 9/11 Tribute
-        Service to honor the lives lost on 9/11,
-        WBZ Anual Toy Service Day, food drives, and
-        other projects through Project 351.
-        Each experience has given me the opportunity
-        to support different communities, meet new
-        people, and take on leadership roles.
-        Volunteering has been a meaningful part of
-        my life, and I enjoy finding new ways to
-        give back and stay involved.
-    </p>
+<h2>What Service Has Taught Me</h2>
 
-    <h2>What Service Has Taught Me</h2>
+<p>
+    One of the biggest lessons I've learned is that
+    community service doesn't always have to involve
+    something huge. Small actions make a meaningful
+    difference, especially when people work together.
+    I've also learned the importance of listening to
+    others before speaking, being a good leader,
+    and believing in the power young adults have
+    to make a difference in the world.
+</p>
 
-    <p>
-        One of the biggest lessons I've learned
-        is that community service doesn't always
-        have to involve something huge. Small
-        actions make a meaningful difference,
-        especially when people work together.
-        I've also learned the importance of
-        listening to others before speaking, 
-        being a good leader, and believing in the power
-        young adults have to make a difference in the world.
-    </p>
+<p>
+    I hope to continue volunteering throughout college
+    and beyond. Service has introduced me to new
+    communities, helped me grow as a leader, and
+    given me opportunities that I'm grateful for.
+    It's something I want to continue making time
+    for in the future.
+</p>
 
-    <p>
-        I hope to continue volunteering throughout
-        college and beyond. Service has introduced
-        me to new communities, helped me grow
-        as a leader, and given me opportunities
-        that I'm grateful for. It's something I
-        want to continue making time for in
-        the future.
-    </p>
+<h2>My Favorite Parts of Volunteering</h2>
 
-    <h2>My Favorite Parts of Volunteering</h2>
-
-    <ul>
-        <li>Meeting people from different communities</li>
-        <li>Participating in Project 351 events</li>
-        <li>Working together toward a shared goal</li>
-        <li>Developing leadership skills</li>
-        <li>Giving back to others</li>
-    </ul>
+<ul>
+    <li>Meeting people from different communities</li>
+    <li>Participating in Project 351 events</li>
+    <li>Working together toward a shared goal</li>
+    <li>Developing leadership skills</li>
+    <li>Giving back to others</li>
+</ul>
 
 <h2>My Community Service Network</h2>
 
 <p>
-    This interactive visualization shows some of
-    my volunteering experiences. Click a circle
-    to learn more about each activity.
+    This interactive D3 visualization highlights
+    several community service initiatives I have
+    participated in. Each circle represents a
+    different experience. Click on a circle to
+    explore my involvement and what the experience
+    has taught me.
 </p>
 
-<div id="network-chart"></div>
+<div id="network-chart">
+    <div class="network-details" id="network-details"
+         role="region" aria-label="Service activity details">
+        <h3 id="detail-title"></h3>
+        <p id="detail-description"></p>
+
+        <button class="back-button" id="back-button"
+                type="button">
+            Back to Network
+        </button>
+    </div>
+</div>
 
 <h2>Community Service Memories</h2>
-    
+
+<p>
+    Here are some photos from my community service
+    experiences and events over the years.
+</p>
+
 <div class="photo-gallery">
-    
-<img src="service.jpg"
-     alt="Group photo at a community service event"
-     width="300">
 
-<img src="baker.JPG"
-     alt="Group photo with Governor Baker"
-     width="300">
+    <img src="service.jpg"
+         alt="Group photo at a community service event"
+         width="300">
 
-<img src="mayor.jpg"
-     alt="Community event with local leaders"
-     width="300">
+    <img src="baker.JPG"
+         alt="Group photo with Governor Baker"
+         width="300">
 
-<img src="volunteer.jpg"
-     alt="Volunteering experience"
-     width="300">
+    <img src="mayor.jpg"
+         alt="Community event with local leaders"
+         width="300">
 
-<img src="IMG_0012.jpg"
-     alt="Community service memory"
-     width="300">
+    <img src="volunteer.jpg"
+         alt="Volunteering experience"
+         width="300">
 
-<img src="IMG_1165.jpg"
-     alt="Community service event"
-     width="300">
+    <img src="IMG_0012.jpg"
+         alt="Community service memory"
+         width="300">
 
-<img src="IMG_0511.jpg"
-     alt="Community service memory"
-     width="300">
+    <img src="IMG_1165.jpg"
+         alt="Community service event"
+         width="300">
 
-<img src="IMG_5479.jpg"
-     alt="Community service recognition"
-     width="300">
+    <img src="IMG_0511.jpg"
+         alt="Community service memory"
+         width="300">
 
-<img src="IMG_9549.JPG"
-     alt="Volunteering experience"
-     width="300">
+    <img src="IMG_5479.jpg"
+         alt="Community service recognition"
+         width="300">
 
-<img src="cookies.jpg"
-     alt="Community service baking activity"
-     width="300">
+    <img src="IMG_9549.JPG"
+         alt="Volunteering experience"
+         width="300">
+
+    <img src="cookies.jpg"
+         alt="Community service baking activity"
+         width="300">
 
 </div>
 
@@ -165,6 +266,7 @@
             Community Service Instagram Post
         </a>
     </li>
+
     <li>
         <a href="https://www.patriotledger.com/story/news/local/2021/09/10/braintree-community-service-project-creates-stone-garden-9-11-project-351/5732039001/">
             9/11 Community Service Project
@@ -178,6 +280,7 @@
     </li>
 </ul>
 
+<!-- Load D3 -->
 <script src="https://d3js.org/d3.v7.min.js"></script>
 
 <script>
@@ -186,82 +289,120 @@
         {
             name: "Project 351",
             label: ["Project 351"],
-            description: [
-                "Project 351 is a Massachusetts",
-                "nonprofit focused on youth",
-                "leadership and service. I have",
-                "continued volunteering as an",
-                "alum, supporting service",
-                "projects across Massachusetts."
-            ],
-            x: 450, y: 110
+            x: 450,
+            y: 105,
+            description:
+                "Project 351 is a Massachusetts-based nonprofit " +
+                "that promotes youth leadership through community " +
+                "service. My involvement began as a student " +
+                "ambassador and continues through my participation " +
+                "as an alum. Through this organization, I have " +
+                "connected with young leaders from across the " +
+                "state, participated in service initiatives, " +
+                "and developed a greater understanding of " +
+                "community engagement. Project 351 has played " +
+                "an important role in shaping my approach to " +
+                "leadership, particularly the importance of " +
+                "collaboration, empathy, and empowering young " +
+                "people to create meaningful change."
         },
         {
             name: "Alternative Spring Break",
             label: ["Alternative", "Spring Break"],
-            description: [
-                "Through Northeastern University,",
-                "I participated in Alternative",
-                "Spring Break and volunteered",
-                "with the Greater Boston Food",
-                "Bank to support efforts",
-                "addressing food insecurity."
-            ],
-            x: 695, y: 230
+            x: 695,
+            y: 230,
+            description:
+                "Through Northeastern University's Alternative " +
+                "Spring Break program, I participated in a " +
+                "service experience with the Greater Boston " +
+                "Food Bank. The opportunity allowed me to " +
+                "contribute to an organization working to " +
+                "address food insecurity across Greater Boston. " +
+                "It also gave me a better understanding of " +
+                "the coordination and resources needed to " +
+                "support communities facing challenges with " +
+                "food access. Working alongside other " +
+                "volunteers reinforced the importance of " +
+                "collaboration and encouraged me to continue " +
+                "seeking service opportunities throughout college."
         },
         {
             name: "9/11 Tribute Service",
             label: ["9/11 Tribute", "Service"],
-            description: [
-                "I participated in the 9/11",
-                "Tribute Service in partnership",
-                "with the Massachusetts Military",
-                "Heroes Fund. The event honored",
-                "those who lost their lives and",
-                "brought volunteers together."
-            ],
-            x: 600, y: 520
+            x: 600,
+            y: 510,
+            description:
+                "I have participated in 9/11 Tribute Service " +
+                "initiatives through a partnership with the " +
+                "Massachusetts Military Heroes Fund. These " +
+                "service opportunities bring volunteers " +
+                "together to honor the lives lost on " +
+                "September 11 and recognize the importance " +
+                "of remembrance and service. Being involved " +
+                "has reinforced my appreciation for the " +
+                "role community organizations play in " +
+                "preserving memories and supporting others. " +
+                "It is especially meaningful to take part " +
+                "in initiatives where collective service " +
+                "serves a purpose beyond the immediate event."
         },
         {
             name: "Food Drives",
             label: ["Food Drives"],
-            description: [
-                "I have participated in food",
-                "drives to help collect donations",
-                "for people experiencing food",
-                "insecurity. These projects",
-                "have shown me how communities",
-                "can make a difference together."
-            ],
-            x: 300, y: 520
+            x: 300,
+            y: 510,
+            description:
+                "Food drives have been a recurring part of " +
+                "my community service involvement. Through " +
+                "these initiatives, I have helped contribute " +
+                "to efforts that collect and distribute " +
+                "donations for individuals and families " +
+                "experiencing food insecurity. These " +
+                "experiences have demonstrated the " +
+                "importance of community participation, " +
+                "outreach, and coordination in addressing " +
+                "local needs. I also value how food drives " +
+                "create accessible opportunities for others " +
+                "to become involved in service and make " +
+                "a contribution to their communities."
         },
         {
             name: "WBZ Toy Service Day",
             label: ["WBZ Toy", "Service Day"],
-            description: [
-                "I have participated in WBZ's",
-                "annual service activities",
-                "helping support children and",
-                "families during the holidays.",
-                "I enjoy working with other",
-                "volunteers for a shared goal."
-            ],
-            x: 205, y: 230
+            x: 205,
+            y: 230,
+            description:
+                "Through WBZ's annual holiday service " +
+                "initiatives, I have participated in " +
+                "volunteer opportunities focused on " +
+                "supporting children and families. " +
+                "These events bring together volunteers " +
+                "around a shared commitment to giving " +
+                "back during the holiday season. " +
+                "I particularly appreciate the " +
+                "collaboration involved in these efforts " +
+                "and the opportunity to connect with " +
+                "people who are similarly committed " +
+                "to service. Experiences like these " +
+                "continue to motivate me to remain " +
+                "involved in community initiatives."
         }
     ];
 
-    // Create the D3 visualization
+    // Dimensions of the network
     const width = 900;
     const height = 630;
     const center = { x: 450, y: 315 };
 
+    // Create the SVG using D3
     const svg = d3.select("#network-chart")
-        .append("svg")
+        .insert("svg", ":first-child")
         .attr("viewBox", `0 0 ${width} ${height}`)
-        .style("width", "100%")
-        .style("height", "auto");
+        .attr("role", "img")
+        .attr("aria-label",
+              "Interactive network of community service activities");
 
-    // Draw connecting lines
+    // Draw the connecting lines
     svg.selectAll(".network-line")
         .data(activities)
         .join("line")
@@ -273,13 +414,14 @@
         .attr("stroke", "#AAB8C5")
         .attr("stroke-width", 2);
 
-    // Draw the center of the network
+    // Draw the center circle
     svg.append("circle")
         .attr("cx", center.x)
         .attr("cy", center.y)
         .attr("r", 65)
         .attr("fill", "#243B53");
 
+    // Center text
     svg.append("text")
         .attr("x", center.x)
         .attr("y", center.y - 8)
@@ -296,7 +438,7 @@
         .attr("font-size", 19)
         .text("Journey");
 
-    // Make each service activity interactive
+    // Add clickable service circles
     const nodes = svg.selectAll(".service-node")
         .data(activities)
         .join("g")
@@ -306,140 +448,74 @@
         )
         .attr("tabindex", 0)
         .attr("role", "button")
-        .attr("aria-label", d => d.name)
+        .attr("aria-label", d => "Learn more about " + d.name)
         .style("cursor", "pointer");
 
-    // Start with circular shapes
-    nodes.append("rect")
-        .attr("class", "node-shape")
-        .attr("x", -68)
-        .attr("y", -68)
-        .attr("width", 136)
-        .attr("height", 136)
-        .attr("rx", 68)
+    // Circle appearance
+    nodes.append("circle")
+        .attr("r", 68)
         .attr("fill", "#DCE5EB")
         .attr("stroke", "#526D82")
         .attr("stroke-width", 2);
 
-    // Add labels
-    nodes.append("text")
-        .attr("class", "node-label")
-        .attr("text-anchor", "middle")
-        .attr("fill", "#243B53")
-        .attr("font-size", 15)
-        .attr("font-weight", "bold")
-        .style("pointer-events", "none");
+    // Add labels to circles
+    nodes.each(function(d) {
+        const text = d3.select(this)
+            .append("text")
+            .attr("text-anchor", "middle")
+            .attr("fill", "#243B53")
+            .attr("font-size", 15)
+            .attr("font-weight", "bold")
+            .style("pointer-events", "none");
 
-    // Function to display text on a node
-    function drawText(node, lines, isOpen) {
-        const text = node.select(".node-label");
+        const startY = d.label.length === 1 ? 5 : -5;
 
-        text.selectAll("tspan").remove();
-
-        text.attr("font-size", isOpen ? 13 : 15)
-            .attr("font-weight", isOpen ? "normal" : "bold")
-            .attr("fill", isOpen ? "white" : "#243B53");
-
-        const lineHeight = isOpen ? 19 : 19;
-        const startY = -((lines.length - 1) * lineHeight) / 2;
-
-        lines.forEach((line, i) => {
+        d.label.forEach((line, i) => {
             text.append("tspan")
                 .attr("x", 0)
-                .attr("y", startY + i * lineHeight)
+                .attr("y", startY + i * 19)
                 .text(line);
         });
-    }
-
-    nodes.each(function(d) {
-        drawText(d3.select(this), d.label, false);
     });
 
-    // Flip the actual node when clicked
-    let selectedNode = null;
-    let animating = false;
+    // Information card elements
+    const card = document.getElementById("network-details");
+    const title = document.getElementById("detail-title");
+    const description = document.getElementById("detail-description");
+    const backButton = document.getElementById("back-button");
 
-    function flipNode(node, d, open, finished) {
-        node.transition()
-            .duration(250)
-            .attr("transform",
-                `translate(${d.x},${d.y}) scale(0.01,1)`
-            )
-            .on("end", function() {
-                const shape = node.select(".node-shape");
+    // Show a description when a circle is clicked
+    function showActivity(event, d) {
+        title.textContent = d.name;
+        description.textContent = d.description;
+        card.scrollTop = 0;
 
-                if (open) {
-                    shape.attr("x", -115)
-                        .attr("y", -92)
-                        .attr("width", 230)
-                        .attr("height", 184)
-                        .attr("rx", 18)
-                        .attr("fill", "#526D82");
-
-                    drawText(node, d.description, true);
-                } else {
-                    shape.attr("x", -68)
-                        .attr("y", -68)
-                        .attr("width", 136)
-                        .attr("height", 136)
-                        .attr("rx", 68)
-                        .attr("fill", "#DCE5EB");
-
-                    drawText(node, d.label, false);
-                }
-
-                node.transition()
-                    .duration(250)
-                    .attr("transform",
-                        `translate(${d.x},${d.y}) scale(1,1)`
-                    )
-                    .on("end", function() {
-                        if (finished) finished();
-                    });
-            });
+        card.classList.add("open");
+        backButton.focus();
     }
 
-    function handleClick(event, d) {
-        if (animating) return;
+    // Connect the circles to the card
+    nodes.on("click", showActivity);
 
-        animating = true;
-        const clicked = d3.select(this);
-
-        if (selectedNode === this) {
-            flipNode(clicked, d, false, () => {
-                selectedNode = null;
-                animating = false;
-            });
-        } else {
-            const previous = selectedNode;
-
-            function openNewNode() {
-                clicked.raise();
-
-                flipNode(clicked, d, true, () => {
-                    selectedNode = clicked.node();
-                    animating = false;
-                });
-            }
-
-            if (previous) {
-                const oldNode = d3.select(previous);
-                const oldData = oldNode.datum();
-
-                flipNode(oldNode, oldData, false, openNewNode);
-            } else {
-                openNewNode();
-            }
-        }
-    }
-
-    nodes.on("click", handleClick);
-
-    // Support keyboard interactions
+    // Keyboard interaction
     nodes.on("keydown", function(event, d) {
         if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
-            handleClick.call(this, event, d);
+            showActivity(event, d);
+        }
+    });
+
+    // Return to the network
+    function closeActivity() {
+        card.classList.remove("open");
+    }
+
+    backButton.addEventListener("click", closeActivity);
+
+    // Allow Escape key to close the card
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            closeActivity();
         }
     });
 </script>
