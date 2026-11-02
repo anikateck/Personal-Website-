@@ -70,24 +70,26 @@ li {
 }
 
 /* Community service photo gallery */
+
+/* Community service photo gallery */
 .photo-gallery {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    columns: 2;
+    column-gap: 15px;
     margin-top: 20px;
 }
 
-/* Make gallery images the same size */
+/* Gallery images */
 .photo-gallery img {
+    display: block;
     width: 100%;
-    height: 280px;
-    object-fit: cover;
-    margin: 0;
+    height: auto;
+    margin: 0 0 15px 0;
+    break-inside: avoid;
 }
 
-/* Adjust gallery for smaller screens */
+/* Mobile layout */
 @media (max-width: 600px) {
     .photo-gallery {
-        grid-template-columns: 1fr;
+        columns: 1;
     }
 }
